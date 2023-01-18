@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>咨询库列表</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <div>templates---咨询库列表</div>
+    <a href="http://192.168.1.123:8088/order/orderList.html">跳转到报名库</a>
+    <div><button class="outLogin">退出</button></div>
+    <script type="text/javascript">
+        $(".outLogin").click(function (){
+            $.ajax({
+                type: "POST",
+                url: "/outLogin",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    console.log("成功:",data);
+                    if(data.result == 1){
+                        window.location.href="http://192.168.1.123:8088/login.html";
+                    }else{
+                        alert(data.message);
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
